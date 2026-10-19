@@ -1,0 +1,24 @@
+{
+  "name": "happy-path-easier-gearing",
+  "description": "Synthetic illustrative job. Maya's 105 R7000 road bike, easier climbing gears, $250 budget, 3 weeks. Mechanic confirms components, answers the derailleur-cage question (SS), accepts recommendation, then picks the in-stock 11-30 alternative which removes the derailleur, sends quote, customer approves.",
+  "steps": [
+    { "tool": "getJobContext", "args": ["WO-1042"] },
+    { "tool": "describeJob", "args": ["WO-1042", { "text": "Customer wants easier climbing gears for a hilly tour in 3 weeks. Budget around $250." }],
+      "expect": { "job.research.status": "needs_info", "job.constraints.budget": 250, "job.constraints.deadlineDays": 15 } },
+    { "tool": "updateConfirmedComponents", "args": ["$job", { "crankset": { "partId": "FC-R7000-5034" }, "cassette": { "partId": "CS-R7000-1128" }, "shifters": { "partId": "ST-R7000" }, "freehub": { "partId": "FH-HG-L" } }, { "source": "mechanic visual check" }],
+      "expect": { "job.research.status": "needs_info" } },
+    { "tool": "updateConfirmedComponents", "args": ["$job", { "rear_derailleur": { "partId": "RD-R7000-SS" } }, { "source": "model code on cage" }],
+      "expect": { "job.research.status": "ready", "job.plan.optionId": "opt-CS-HG800-1134" } },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "cassette", "partId": "CS-HG800-1134" }, "$config_version"] },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "cassette", "partId": "CS-R7000-1130" }, "$config_version"],
+      "expect": { "result.dependency_changes": { "contains": "rear_derailleur" } } },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "chain" }, "$config_version"],
+      "expect": { "ready_to_quote.ready": true } },
+    { "tool": "sendQuote", "args": ["$job", {}],
+      "expect": { "job.status": "quote_sent", "active_estimate.version": 1 } },
+    { "tool": "recordCustomerResponse", "args": ["$estimate", "$version", "approve"],
+      "expect": { "job_status": "approved" } },
+    { "tool": "getJobContext", "args": ["$job"],
+      "expect": { "job.status": "approved", "job.approval.version": 1 } }
+  ]
+}

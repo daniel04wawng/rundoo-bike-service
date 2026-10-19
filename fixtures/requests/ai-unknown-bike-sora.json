@@ -1,0 +1,16 @@
+{
+  "name": "ai-unknown-bike-sora",
+  "description": "Synthetic. Sam's bike has no record. AI research (replay) asks four identifiers; once answered as SORA R3000 2x9 with RD-R3000-SS and 11-28, it recommends CS-HG400-9 11-32T (max for SS) and a 9-speed chain, with cited sources.",
+  "steps": [
+    { "tool": "describeJob", "args": ["WO-1043", { "text": "Wants easier gears on an older road bike, not sure what is on it. Bike is worth about $300." }],
+      "expect": { "job.research.engine": "ai", "job.research.status": "needs_info", "job.constraints.bikeValue": 300 } },
+    { "tool": "updateConfirmedComponents", "args": ["$job", { "rear_derailleur": { "label": "RD-R3000-SS" }, "cassette": { "label": "11-28" }, "crankset": { "label": "50-34" }, "shifters": { "label": "ST-R3000, 9-speed" } }, null],
+      "expect": { "job.research.status": "ready", "job.requirements.0.current_part_id": "AI-CS-HG400-9-11-32" } },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "cassette" }, "$config_version"] },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "chain", "partId": "AI-KMC-X9" }, "$config_version"],
+      "expect": { "ready_to_quote.ready": true } },
+    { "tool": "getJobContext", "args": ["$job"], "expect": { "job.notes.0.kind": "economics" } },
+    { "tool": "updateConfirmedComponents", "args": ["$job", { "rear_derailleur": { "label": "RD-R3000-GS" } }, null],
+      "expect": { "job.research.status": "not_found", "job.selections": {} } }
+  ]
+}

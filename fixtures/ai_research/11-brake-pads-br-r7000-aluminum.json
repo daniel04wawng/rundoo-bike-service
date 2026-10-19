@@ -1,0 +1,55 @@
+{
+  "id": "brake-pads-br-r7000-aluminum",
+  "provenance": "Hand-authored replay fixture (not recorded model output). Facts checked on 2026-10-19 against Shimano DM-RACBR01-03-ENG (2019-04-08), Shimano compatibility charts C-201/C-202/C-456 (Ver 2.7, Oct. 7, 2026), koolstop.com and swissstop.com. Pack size of R55C4 inserts is not confirmed by Shimano.",
+  "description": "BR-R7000 rim calipers on aluminum rims: R55C4 cartridge inserts (Shimano standard), Kool-Stop Dura 2 and SwissStop FlashPro Original Black as cited alternatives.",
+  "match": { "goal_type": "brake_service", "components": { "brake_caliper": "R7000", "rim_material": "alu" } },
+  "output": {
+    "status": "ready",
+    "summary": "BR-R7000 on aluminum rims takes R55C4 cartridge inserts.",
+    "questions": [],
+    "requirements": [
+      {
+        "id": "brake_pads",
+        "slot": "brake_pads",
+        "title": "Brake pad inserts",
+        "kind": "required",
+        "qty": 2,
+        "part": { "brand": "Shimano", "name": "R55C4 cartridge brake shoe inserts", "variant": "R55C4 (aluminum rims)", "mpn": "R55C4", "customer_label": "brake pad inserts" },
+        "reason": "Shimano's standard insert for BR-R7000 on aluminum rims.",
+        "fit_checks": [
+          { "detail": "Chart C-201 lists R55C4 as the standard shoe for BR-R7000", "source_ids": ["s1"] },
+          { "detail": "Aluminum rim 20.8-24 mm wide uses R55C4", "source_ids": ["s2"] },
+          { "detail": "Inserts are left/right specific; fixing bolt 1-1.5 N·m; reset toe-in after fitting", "source_ids": ["s2"] }
+        ],
+        "alternatives": [
+          {
+            "part": { "brand": "Kool-Stop", "name": "Dura 2 insert replacement pad", "variant": "Dura 2 insert, black", "mpn": "KS-DR2B", "customer_label": "brake pad inserts" },
+            "reason": "Kool-Stop states fit for Shimano 55 mm holders with set screw.",
+            "tags": ["other_brand"],
+            "dependency": "Uses the existing Shimano cartridge holders.",
+            "source_ids": ["s4"]
+          },
+          {
+            "part": { "brand": "SwissStop", "name": "FlashPro Original Black", "variant": "FlashPro Original Black (aluminum rims)", "mpn": "P100001815", "customer_label": "brake pad inserts" },
+            "reason": "SwissStop lists fit for Shimano Road, aluminum rims.",
+            "tags": ["other_brand"],
+            "dependency": null,
+            "source_ids": ["s5"]
+          }
+        ],
+        "source_ids": ["s1", "s2"]
+      }
+    ],
+    "inferred": [
+      "Carbon rims would need R55C4 for carbon rims or R55C4-A instead; this answer assumes the confirmed aluminum rims.",
+      "Replace when the grooves are worn away (Shimano tech tip). The note's 'look worn' is the mechanic's observation, not a diagnosis."
+    ],
+    "sources": [
+      { "id": "s1", "title": "Shimano chart C-201 Brake / Shoe line-up", "url": "https://productinfo.shimano.com/en/compatibility/C-201", "claim": "BR-R7000: R55C4 (cartridge, aluminum) Standard; R55C4 for carbon rim, R55C4-A for carbon rim and R55CT4 Option.", "retrieved": "2026-10-19" },
+      { "id": "s2", "title": "Shimano dealer manual DM-RACBR01-03 (BR-R7000 / ST-R7000)", "url": "https://si.shimano.com/en/pdfs/dm/RACBR01/DM-RACBR01-03-ENG.pdf", "claim": "p.18: aluminum rim 20.8-24 mm uses R55C4. p.42: cartridge mounting bolt 1-1.5 N·m; inserts are left/right specific. p.25: set 0.5 mm toe-in. p.38: replace when the grooves are worn away.", "retrieved": "2026-10-19" },
+      { "id": "s3", "title": "Shimano chart C-456 Brake systems compatibility (road)", "url": "https://productinfo.shimano.com/pdfs/product/latest/Compatibility_en.pdf", "claim": "ST-R7000 with BR-R7000 is a standard combination (Ver 2.7, Oct. 7, 2026).", "retrieved": "2026-10-19" },
+      { "id": "s4", "title": "Kool-Stop Dura 2 insert replacement pad", "url": "https://koolstop.com/products/dura-2", "claim": "Fits Shimano, SRAM, TRP and Tektro holders with a set screw; fits 55 mm length holders; holders not included.", "retrieved": "2026-10-19" },
+      { "id": "s5", "title": "SwissStop FlashPro Original Black", "url": "https://swissstop.com/brakepads/rimbrakes/flashpro/originalblack/", "claim": "Fits Shimano Road and SRAM Road; for aluminum rims; PN P100001815.", "retrieved": "2026-10-19" }
+    ]
+  }
+}

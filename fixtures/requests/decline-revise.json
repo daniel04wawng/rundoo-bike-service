@@ -1,0 +1,20 @@
+{
+  "name": "decline-revise-and-change-after-approval",
+  "description": "Synthetic. Priya's job already has a tune-up. Add easier gearing (GS already fitted, so no derailleur). Customer declines v1; mechanic switches to KMC chain and resends v2; customer approves v2; then a labor edit invalidates the approval.",
+  "steps": [
+    { "tool": "describeJob", "args": ["WO-1044", { "text": "While doing the tune-up: she wants easier gears for climbing. Under $200 if possible." }] },
+    { "tool": "updateConfirmedComponents", "args": ["$job", { "crankset": { "partId": "FC-R7000-5034" }, "rear_derailleur": { "partId": "RD-R7000-GS" }, "cassette": { "partId": "CS-R7000-1130" }, "shifters": { "partId": "ST-R7000" }, "freehub": { "partId": "FH-HG-L" } }, null],
+      "expect": { "job.research.status": "ready", "job.plan.optionId": "opt-CS-HG800-1134" } },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "cassette", "partId": "CS-R7000-1132" }, "$config_version"] },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "chain" }, "$config_version"],
+      "expect": { "ready_to_quote.ready": true } },
+    { "tool": "sendQuote", "args": ["$job", {}], "expect": { "active_estimate.version": 1 } },
+    { "tool": "recordCustomerResponse", "args": ["$estimate", "$version", "decline"], "expect": { "job_status": "declined" } },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "chain", "partId": "KMC-X11" }, "$config_version"] },
+    { "tool": "sendQuote", "args": ["$job", {}], "expect": { "active_estimate.version": 2, "job.status": "quote_sent" } },
+    { "tool": "recordCustomerResponse", "args": ["$job-E1", 1, "approve"], "expect": { "error": "not_open" } },
+    { "tool": "recordCustomerResponse", "args": ["$estimate", "$version", "approve"], "expect": { "job_status": "approved" } },
+    { "tool": "updateLabor", "args": ["$job", [{ "id": "labor-cassette", "hours": 0.5 }]],
+      "expect": { "job.status": "changed_after_approval", "job.approval.valid": false } }
+  ]
+}

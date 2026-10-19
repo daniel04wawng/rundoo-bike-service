@@ -1,0 +1,30 @@
+{
+  "note": "Technical specs only, each citing evidence ids in evidence.json. Parts with unverified=true are placeholders the rules refuse to reason about.",
+  "choices": {
+    "crankset": ["FC-R7000-5034", "OTHER-crankset"],
+    "rear_derailleur": ["RD-R7000-SS", "RD-R7000-GS", "OTHER-rear_derailleur"],
+    "cassette": ["CS-R7000-1128", "CS-R7000-1130", "CS-R7000-1132", "OTHER-cassette"],
+    "shifters": ["ST-R7000", "OTHER-shifters"],
+    "freehub": ["FH-HG-L", "FH-HG-M", "OTHER-freehub"]
+  },
+  "parts": [
+    { "id": "FC-R7000-5034", "slot": "crankset", "family": "R7000", "brand": "Shimano", "name": "105 crankset", "variant": "FC-R7000 50-34T", "customerLabel": "crankset", "specs": { "bigRing": 50, "smallRing": 34 }, "evidenceIds": ["ev-fc-r7000", "ev-c455"] },
+    { "id": "RD-R7000-SS", "slot": "rear_derailleur", "family": "R7000", "brand": "Shimano", "name": "105 rear derailleur, short cage", "variant": "RD-R7000-SS", "customerLabel": "rear derailleur", "specs": { "speeds": 11, "shifterFamily": "shimano_road_11", "minLowSprocket": 25, "maxLowSprocket": 30, "totalCapacity": 35, "maxFrontDifference": 16 }, "evidenceIds": ["ev-rd-r7000-ss", "ev-c454", "ev-c254"] },
+    { "id": "RD-R7000-GS", "slot": "rear_derailleur", "family": "R7000", "brand": "Shimano", "name": "105 rear derailleur, medium cage", "variant": "RD-R7000-GS", "customerLabel": "medium-cage rear derailleur", "specs": { "speeds": 11, "shifterFamily": "shimano_road_11", "minLowSprocket": 28, "maxLowSprocket": 34, "totalCapacity": 39, "maxFrontDifference": 16 }, "evidenceIds": ["ev-rd-r7000-gs", "ev-c454", "ev-c254"] },
+    { "id": "CS-R7000-1128", "slot": "cassette", "family": "R7000", "brand": "Shimano", "name": "105 cassette", "variant": "CS-R7000 11-28T", "customerLabel": "11-28 cassette", "specs": { "speeds": 11, "smallestCog": 11, "largestCog": 28, "freehubFit": { "hg_l": {} } }, "evidenceIds": ["ev-cs-r7000", "ev-c254"] },
+    { "id": "CS-R7000-1130", "slot": "cassette", "family": "R7000", "brand": "Shimano", "name": "105 cassette", "variant": "CS-R7000 11-30T", "customerLabel": "11-30 cassette", "specs": { "speeds": 11, "smallestCog": 11, "largestCog": 30, "freehubFit": { "hg_l": {} } }, "evidenceIds": ["ev-cs-r7000", "ev-c254"] },
+    { "id": "CS-R7000-1132", "slot": "cassette", "family": "R7000", "brand": "Shimano", "name": "105 cassette", "variant": "CS-R7000 11-32T", "customerLabel": "11-32 cassette", "specs": { "speeds": 11, "smallestCog": 11, "largestCog": 32, "freehubFit": { "hg_l": {} } }, "evidenceIds": ["ev-cs-r7000", "ev-c254"] },
+    { "id": "CS-HG800-1134", "slot": "cassette", "family": "HG800", "brand": "Shimano", "name": "Cassette, 11-speed", "variant": "CS-HG800-11 11-34T", "customerLabel": "11-34 cassette", "specs": { "speeds": 11, "smallestCog": 11, "largestCog": 34, "freehubFit": { "hg_l": { "spacer": "SPACER-185", "spacerLabel": "1.85 mm spacer", "evidenceIds": ["ev-c731"] }, "hg_m": {} } }, "evidenceIds": ["ev-cs-hg800-11", "ev-c254", "ev-c454"] },
+    { "id": "ST-R7000", "slot": "shifters", "family": "R7000", "brand": "Shimano", "name": "105 shift levers", "variant": "ST-R7000 (2x11)", "customerLabel": "shifters", "specs": { "speeds": 11, "shifterFamily": "shimano_road_11" }, "evidenceIds": ["ev-st-r7000", "ev-c454"] },
+    { "id": "FH-HG-L", "slot": "freehub", "family": "HG", "brand": "Shimano", "name": "Freehub body", "variant": "HG spline L (road 11-speed)", "customerLabel": "freehub", "specs": { "spline": "hg_l" }, "evidenceIds": ["ev-c731"] },
+    { "id": "FH-HG-M", "slot": "freehub", "family": "HG", "brand": "Shimano", "name": "Freehub body", "variant": "HG spline M (8-10 speed, MTB 11)", "customerLabel": "freehub", "specs": { "spline": "hg_m" }, "evidenceIds": ["ev-c731"] },
+    { "id": "CN-HG601-11", "slot": "chain", "family": "HG", "brand": "Shimano", "name": "105 chain, 11-speed", "variant": "CN-HG601-11", "customerLabel": "new 11-speed chain", "specs": { "speeds": 11 }, "evidenceIds": ["ev-cn-hg601-11", "ev-c454", "ev-dm-rard001"] },
+    { "id": "KMC-X11", "slot": "chain", "family": "KMC", "brand": "KMC", "name": "Chain, 11-speed", "variant": "X11", "customerLabel": "new 11-speed chain", "shortReason": "11-speed, KMC states Shimano 11-speed compatibility.", "specs": { "speeds": 11 }, "evidenceIds": ["ev-kmc-x11", "ev-dm-rard001"] },
+    { "id": "SPACER-185", "slot": "spacer", "family": "HG", "brand": "Shimano", "name": "Cassette spacer", "variant": "1.85 mm cassette spacer", "customerLabel": "cassette spacer", "specs": { "thicknessMm": 1.85 }, "evidenceIds": ["ev-c731", "ev-cs-hg800-11"] },
+    { "id": "OTHER-crankset", "slot": "crankset", "brand": "", "name": "Not listed", "variant": "Not listed / other", "unverified": true, "specs": {} },
+    { "id": "OTHER-rear_derailleur", "slot": "rear_derailleur", "brand": "", "name": "Not listed", "variant": "Not listed / other", "unverified": true, "specs": {} },
+    { "id": "OTHER-cassette", "slot": "cassette", "brand": "", "name": "Not listed", "variant": "Not listed / other", "unverified": true, "specs": {} },
+    { "id": "OTHER-shifters", "slot": "shifters", "brand": "", "name": "Not listed", "variant": "Not listed / other", "unverified": true, "specs": {} },
+    { "id": "OTHER-freehub", "slot": "freehub", "brand": "", "name": "Not listed", "variant": "Not listed / other", "unverified": true, "specs": {} }
+  ]
+}

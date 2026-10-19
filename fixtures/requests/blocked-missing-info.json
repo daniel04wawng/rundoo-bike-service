@@ -1,0 +1,84 @@
+{
+  "name": "blocked-missing-info",
+  "description": "Synthetic. Sam's older bike has no component record, so AI research (replay) asks for specific identifiers instead of guessing. The mechanic marks the derailleur 'Not listed'; with no supported research this must return Not found with next steps, and a supplier inquiry draft (not sent).",
+  "steps": [
+    {
+      "tool": "describeJob",
+      "args": [
+        "WO-1043",
+        {
+          "text": "Wants easier gears on an older road bike, not sure what is on it. Bike is worth about $300."
+        }
+      ],
+      "expect": {
+        "job.research.status": "needs_info",
+        "job.research.engine": "ai",
+        "job.constraints.bikeValue": 300
+      }
+    },
+    {
+      "tool": "updateConfirmedComponents",
+      "args": [
+        "$job",
+        {
+          "rear_derailleur": {
+            "partId": "OTHER-rear_derailleur"
+          },
+          "crankset": {
+            "partId": "FC-R7000-5034"
+          },
+          "cassette": {
+            "partId": "CS-R7000-1128"
+          },
+          "shifters": {
+            "partId": "ST-R7000"
+          },
+          "freehub": {
+            "partId": "FH-HG-L"
+          }
+        },
+        {
+          "source": "mechanic"
+        }
+      ],
+      "expect": {
+        "job.research.status": "not_found",
+        "job.requirements": []
+      }
+    },
+    {
+      "tool": "savePartSelection",
+      "args": [
+        "$job",
+        {
+          "requirementId": "cassette",
+          "partId": "CS-R7000-1132"
+        },
+        "$config_version"
+      ],
+      "expect": {
+        "error": "research_not_ready"
+      }
+    },
+    {
+      "tool": "draftSupplierInquiry",
+      "args": [
+        "$job",
+        {}
+      ],
+      "expect": {
+        "job.inquiries.0.status": "draft"
+      }
+    },
+    {
+      "tool": "sendQuote",
+      "args": [
+        "$job",
+        {}
+      ],
+      "expect": {
+        "error": "not_ready"
+      }
+    }
+  ]
+}

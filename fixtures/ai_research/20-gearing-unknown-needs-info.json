@@ -1,0 +1,59 @@
+{
+  "id": "gearing-unknown-needs-info",
+  "provenance": "Hand-authored replay fixture (not recorded model output). Written 2026-10-19 in the ai_research.v1 shape a live run must return.",
+  "description": "Easier-gearing job on a bike with no usable component record: ask only the identifiers that decide compatibility.",
+  "match": {
+    "goal_type": "easier_gearing",
+    "any_absent": [
+      "rear_derailleur",
+      "cassette",
+      "crankset",
+      "shifters"
+    ]
+  },
+  "output": {
+    "status": "needs_info",
+    "summary": "Easier gearing depends on the derailleur's limits and what is fitted now.",
+    "questions": [
+      {
+        "slot": "rear_derailleur",
+        "text": "Which rear derailleur is fitted?",
+        "hint": "Model code is on the back of the cage, e.g. RD-R3000-SS.",
+        "suggestion": "",
+        "suggestion_basis": "",
+        "options": []
+      },
+      {
+        "slot": "cassette",
+        "text": "What cassette range is fitted?",
+        "hint": "Smallest and largest cog, e.g. 11-28.",
+        "suggestion": "",
+        "suggestion_basis": "",
+        "options": []
+      },
+      {
+        "slot": "crankset",
+        "text": "Which chainrings are fitted?",
+        "hint": "Tooth counts are stamped on each ring, e.g. 50-34.",
+        "suggestion": "",
+        "suggestion_basis": "",
+        "options": []
+      },
+      {
+        "slot": "shifters",
+        "text": "Which shifters, and how many rear speeds?",
+        "hint": "e.g. ST-R3000, 9-speed.",
+        "suggestion": "",
+        "suggestion_basis": "",
+        "options": [
+          "8-speed",
+          "9-speed",
+          "10-speed",
+          "11-speed"
+        ]
+      }
+    ],
+    "requirements": [],
+    "sources": []
+  }
+}

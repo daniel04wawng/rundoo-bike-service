@@ -1,0 +1,151 @@
+{
+  "note": "SYNTHETIC customers, bikes and jobs. Illustrative only, not real shop records.",
+  "nextJobNumber": 1045,
+  "customers": [
+    {
+      "id": "C-1",
+      "name": "Maya Chen",
+      "phone": "(604) 555-0142"
+    },
+    {
+      "id": "C-2",
+      "name": "Sam Ortiz",
+      "phone": "(604) 555-0178"
+    },
+    {
+      "id": "C-3",
+      "name": "Priya Nair",
+      "phone": "(604) 555-0119"
+    }
+  ],
+  "bikes": [
+    {
+      "id": "B-1",
+      "customerId": "C-1",
+      "label": "Road bike, 105 R7000 2x11",
+      "recordedComponents": {
+        "crankset": {
+          "partId": "FC-R7000-5034",
+          "label": "FC-R7000 50-34T"
+        },
+        "rear_derailleur": {
+          "partId": null,
+          "label": "RD-R7000 (cage not recorded)",
+          "familyHint": "R7000"
+        },
+        "cassette": {
+          "partId": "CS-R7000-1128",
+          "label": "CS-R7000 11-28T"
+        },
+        "shifters": {
+          "partId": "ST-R7000",
+          "label": "ST-R7000 (2x11)"
+        },
+        "freehub": {
+          "partId": "FH-HG-L",
+          "label": "HG spline L (road 11-speed)"
+        },
+        "chain": {
+          "partId": "CN-HG601-11",
+          "label": "CN-HG601-11"
+        },
+        "wheels": {
+          "partId": null,
+          "label": "Aluminum clincher wheelset (stock, rim brake)"
+        }
+      }
+    },
+    {
+      "id": "B-2",
+      "customerId": "C-2",
+      "label": "Older steel road bike",
+      "recordedComponents": {
+        "crankset": {
+          "partId": null,
+          "label": null
+        },
+        "rear_derailleur": {
+          "partId": null,
+          "label": null
+        },
+        "cassette": {
+          "partId": null,
+          "label": null
+        },
+        "shifters": {
+          "partId": null,
+          "label": null
+        },
+        "freehub": {
+          "partId": null,
+          "label": null
+        }
+      }
+    },
+    {
+      "id": "B-3",
+      "customerId": "C-3",
+      "label": "Endurance bike, 105 R7000 2x11",
+      "recordedComponents": {
+        "crankset": {
+          "partId": "FC-R7000-5034",
+          "label": "FC-R7000 50-34T"
+        },
+        "rear_derailleur": {
+          "partId": "RD-R7000-GS",
+          "label": "RD-R7000-GS"
+        },
+        "cassette": {
+          "partId": "CS-R7000-1130",
+          "label": "CS-R7000 11-30T"
+        },
+        "shifters": {
+          "partId": "ST-R7000",
+          "label": "ST-R7000 (2x11)"
+        },
+        "freehub": {
+          "partId": "FH-HG-L",
+          "label": "HG spline L (road 11-speed)"
+        },
+        "chain": {
+          "partId": "CN-HG601-11",
+          "label": "CN-HG601-11"
+        },
+        "wheels": {
+          "partId": null,
+          "label": "Aluminum clincher wheelset (stock, rim brake)"
+        }
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "id": "WO-1042",
+      "customerId": "C-1",
+      "bikeId": "B-1",
+      "title": "Gearing upgrade (draft)",
+      "createdAt": "2026-10-18T16:05:00.000Z"
+    },
+    {
+      "id": "WO-1043",
+      "customerId": "C-2",
+      "bikeId": "B-2",
+      "title": "Gearing question (draft)",
+      "createdAt": "2026-10-18T15:40:00.000Z"
+    },
+    {
+      "id": "WO-1044",
+      "customerId": "C-3",
+      "bikeId": "B-3",
+      "title": "Tune-up, in progress",
+      "createdAt": "2026-10-18T14:10:00.000Z",
+      "existingLabor": [
+        {
+          "id": "labor-existing-tuneup",
+          "label": "Standard tune-up (already on work order)",
+          "hours": 1.0
+        }
+      ]
+    }
+  ]
+}

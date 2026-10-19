@@ -1,0 +1,324 @@
+{
+  "note": "SYNTHETIC commercial data. Prices, stock, suppliers and offers are invented for the demo and are not real sourcing data or vendor relationships. 'aliases' map the names/part numbers research may use for a part onto one synthetic catalog entry (exact match only).",
+  "shop": {
+    "name": "Demo Cycle Works",
+    "phone": "(604) 555-0100",
+    "locationId": "LOC-VAN",
+    "location": "Vancouver (synthetic)",
+    "currency": "CAD",
+    "taxRate": 0.12,
+    "taxLabel": "12% demo rate (GST 5% + PST 7%) on parts and labor",
+    "laborRate": 100,
+    "laborOps": {
+      "cassette": {
+        "label": "Install cassette",
+        "hours": 0.25
+      },
+      "rear_derailleur": {
+        "label": "Install rear derailleur",
+        "hours": 0.5
+      },
+      "chain": {
+        "label": "Size and install chain",
+        "hours": 0.25
+      },
+      "drivetrain_adjust": {
+        "label": "Shift adjustment and test ride",
+        "hours": 0.25
+      },
+      "brake_pads": {
+        "label": "Replace brake pads and adjust",
+        "hours": 0.5
+      }
+    }
+  },
+  "retailPrices": {
+    "FC-R7000-5034": 189.99,
+    "RD-R7000-SS": 79.99,
+    "RD-R7000-GS": 84.99,
+    "CS-R7000-1128": 64.99,
+    "CS-R7000-1130": 69.99,
+    "CS-R7000-1132": 74.99,
+    "CS-HG800-1134": 89.99,
+    "ST-R7000": 399.99,
+    "CN-HG601-11": 44.99,
+    "KMC-X11": 39.99,
+    "SPACER-185": 4.99,
+    "AI-R55C4": 24.99,
+    "AI-KS-DR2B": 19.99,
+    "AI-P100001815": 34.99,
+    "AI-CS-HG400-9-11-32": 44.99,
+    "AI-CS-HG50-9-11-30": 34.99,
+    "AI-CN-HG53": 24.99,
+    "AI-CN-HG93": 34.99,
+    "AI-KMC-X9": 22.99
+  },
+  "inventory": [
+    {
+      "partId": "CS-R7000-1130",
+      "locationId": "LOC-VAN",
+      "onHand": 2,
+      "committed": 0
+    },
+    {
+      "partId": "CS-R7000-1132",
+      "locationId": "LOC-VAN",
+      "onHand": 1,
+      "committed": 1
+    },
+    {
+      "partId": "CS-R7000-1128",
+      "locationId": "LOC-VAN",
+      "onHand": 1,
+      "committed": 0
+    },
+    {
+      "partId": "CN-HG601-11",
+      "locationId": "LOC-VAN",
+      "onHand": 3,
+      "committed": 1
+    },
+    {
+      "partId": "KMC-X11",
+      "locationId": "LOC-VAN",
+      "onHand": 4,
+      "committed": 0
+    },
+    {
+      "partId": "SPACER-185",
+      "locationId": "LOC-VAN",
+      "onHand": 10,
+      "committed": 0
+    },
+    {
+      "partId": "AI-R55C4",
+      "locationId": "LOC-VAN",
+      "onHand": 3,
+      "committed": 0
+    },
+    {
+      "partId": "AI-KS-DR2B",
+      "locationId": "LOC-VAN",
+      "onHand": 2,
+      "committed": 0
+    },
+    {
+      "partId": "AI-CN-HG53",
+      "locationId": "LOC-VAN",
+      "onHand": 2,
+      "committed": 0
+    },
+    {
+      "partId": "AI-KMC-X9",
+      "locationId": "LOC-VAN",
+      "onHand": 1,
+      "committed": 0
+    },
+    {
+      "partId": "AI-CS-HG50-9-11-30",
+      "locationId": "LOC-VAN",
+      "onHand": 1,
+      "committed": 0
+    }
+  ],
+  "offers": [
+    {
+      "id": "OF-1",
+      "partId": "CS-HG800-1134",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 52.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-2",
+      "partId": "CS-HG800-1134",
+      "supplierName": "Northern Parts Co.",
+      "unitCost": 48.0,
+      "shipping": 12.0,
+      "freeShippingOver": null,
+      "minOrderValue": 200,
+      "currency": "CAD",
+      "etaDays": 5,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-3",
+      "partId": "CS-R7000-1132",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 44.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-4",
+      "partId": "CS-R7000-1130",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 41.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-5",
+      "partId": "RD-R7000-GS",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 49.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-6",
+      "partId": "RD-R7000-GS",
+      "supplierName": "Northern Parts Co.",
+      "unitCost": 46.0,
+      "shipping": 12.0,
+      "freeShippingOver": null,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 6,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-7",
+      "partId": "CN-HG601-11",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 22.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-8",
+      "partId": "KMC-X11",
+      "supplierName": "Northern Parts Co.",
+      "unitCost": 19.0,
+      "shipping": 12.0,
+      "freeShippingOver": null,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 5,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-9",
+      "partId": "RD-R7000-SS",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 45.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": false
+    },
+    {
+      "id": "OF-10",
+      "partId": "AI-R55C4",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 13.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-11",
+      "partId": "AI-P100001815",
+      "supplierName": "Northern Parts Co.",
+      "unitCost": 21.0,
+      "shipping": 12.0,
+      "freeShippingOver": null,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 5,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-12",
+      "partId": "AI-CS-HG400-9-11-32",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 24.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": true
+    },
+    {
+      "id": "OF-13",
+      "partId": "AI-CN-HG93",
+      "supplierName": "Coastal Bike Supply",
+      "unitCost": 19.0,
+      "shipping": 9.0,
+      "freeShippingOver": 150,
+      "minOrderValue": null,
+      "currency": "CAD",
+      "etaDays": 3,
+      "inStockAtSupplier": true
+    }
+  ],
+  "aliases": {
+    "AI-R55C4": [
+      "Y8L298060",
+      "R55C4 cartridge inserts (pair)",
+      "R55C4 cartridge inserts",
+      "R55C4 (aluminum rims)",
+      "R55C4 cartridge brake shoe inserts"
+    ],
+    "AI-KS-DR2B": [
+      "KS-DR2B",
+      "Dura 2 insert, black",
+      "Dura 2 insert replacement pad"
+    ],
+    "AI-P100001815": [
+      "P100001815",
+      "FlashPro Original Black",
+      "FlashPro Original Black (aluminum rims)"
+    ],
+    "AI-CS-HG400-9-11-32": [
+      "CS-HG400-9-11-32",
+      "CS-HG400-9 11-32T",
+      "CS-HG400-9 11-32"
+    ],
+    "AI-CS-HG50-9-11-30": [
+      "CS-HG50-9-11-30",
+      "CS-HG50-9 11-30T",
+      "CS-HG50-9 11-30"
+    ],
+    "AI-CN-HG53": [
+      "CN-HG53",
+      "CN-HG53 9-speed chain"
+    ],
+    "AI-CN-HG93": [
+      "CN-HG93",
+      "CN-HG93 9-speed chain"
+    ],
+    "AI-KMC-X9": [
+      "KMC-X9",
+      "X9",
+      "KMC X9"
+    ]
+  }
+}

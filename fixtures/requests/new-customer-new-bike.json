@@ -1,0 +1,19 @@
+{
+  "name": "new-customer-new-bike",
+  "description": "Synthetic. A walk-in customer and bike created from New repair / custom job, then the same workflow: describe, answer identifier questions (AI research, replay), recommendations, quote, send, approve.",
+  "steps": [
+    { "tool": "createJob", "args": [{ "newCustomer": { "name": "Alex Rivera", "phone": "(604) 555-0199" }, "newBike": { "label": "Older aluminum road bike" } }],
+      "expect": { "job.stage": "describe", "customer.name": "Alex Rivera", "bike.label": "Older aluminum road bike", "job.configuration.components": {} } },
+    { "tool": "describeJob", "args": ["$job", { "text": "Wants easier gears for hills." }],
+      "expect": { "job.research.engine": "ai", "job.research.status": "needs_info" } },
+    { "tool": "updateConfirmedComponents", "args": ["$job", { "rear_derailleur": { "label": "RD-R3000-SS" }, "cassette": { "label": "11-28" }, "crankset": { "label": "50-34" }, "shifters": { "label": "ST-R3000, 9-speed" } }, null],
+      "expect": { "job.research.status": "ready" } },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "cassette" }, "$config_version"] },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "chain" }, "$config_version"], "expect": { "ready_to_quote.ready": true } },
+    { "tool": "sendQuote", "args": ["$job", {}], "expect": { "job.status": "quote_sent" } },
+    { "tool": "recordCustomerResponse", "args": ["$estimate", "$version", "approve"], "expect": { "job_status": "approved" } },
+    { "tool": "createJob", "args": [{ "newCustomer": { "name": "X" }, "newBike": { "label": "Bike" } }], "expect": { "error": "bad_customer_name" } },
+    { "tool": "createJob", "args": [{ "newCustomer": { "name": "Jo Lee", "phone": "call me" }, "newBike": { "label": "Bike" } }], "expect": { "error": "bad_phone" } },
+    { "tool": "listCustomers", "args": [], "expect": { "customers.3.name": "Alex Rivera" } }
+  ]
+}

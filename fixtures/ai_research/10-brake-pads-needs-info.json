@@ -1,0 +1,39 @@
+{
+  "id": "brake-pads-needs-info",
+  "provenance": "Hand-authored replay fixture (not recorded model output). Written 2026-10-19 in the ai_research.v1 shape a live run must return.",
+  "description": "Any brake-pad job before the caliper model and rim material are confirmed: ask only those two blocking identifiers.",
+  "match": {
+    "goal_type": "brake_service",
+    "any_absent": [
+      "brake_caliper",
+      "rim_material"
+    ]
+  },
+  "output": {
+    "status": "needs_info",
+    "summary": "Pads depend on the caliper model and the rim material.",
+    "questions": [
+      {
+        "slot": "brake_caliper",
+        "text": "Which brake calipers are fitted?",
+        "hint": "Model is cast on the caliper arm, e.g. BR-R7000.",
+        "suggestion": "BR-R7000",
+        "suggestion_basis": "the ST-R7000 rim-brake levers on file",
+        "options": []
+      },
+      {
+        "slot": "rim_material",
+        "text": "Are the rims aluminum or carbon?",
+        "hint": "Aluminum and carbon rims take different pad compounds.",
+        "suggestion": "Aluminum",
+        "suggestion_basis": "the stock aluminum wheelset on the bike record",
+        "options": [
+          "Aluminum",
+          "Carbon"
+        ]
+      }
+    ],
+    "requirements": [],
+    "sources": []
+  }
+}

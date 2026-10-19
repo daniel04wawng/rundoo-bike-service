@@ -1,0 +1,18 @@
+{
+  "name": "ai-brake-pads",
+  "description": "Synthetic. Brake job on Maya's road bike goes to AI research (replay). It asks only caliper model and rim material, then recommends cited R55C4 inserts; mechanic picks the Kool-Stop alternative, sends, customer approves.",
+  "steps": [
+    { "tool": "describeJob", "args": ["WO-1042", { "text": "Brakes squeal and the pads look worn. Replace pads." }],
+      "expect": { "job.research.engine": "ai", "job.research.status": "needs_info", "job.constraints.goalType": "brake_service" } },
+    { "tool": "updateConfirmedComponents", "args": ["$job", { "brake_caliper": { "label": "BR-R7000" } }, null],
+      "expect": { "job.research.status": "needs_info" } },
+    { "tool": "updateConfirmedComponents", "args": ["$job", { "rim_material": { "label": "Aluminum" } }, null],
+      "expect": { "job.research.status": "ready", "job.requirements.0.current_part_id": "AI-R55C4", "job.requirements.0.citation": "cited" } },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "brake_pads", "partId": "AI-KS-DR2B" }, "$config_version"],
+      "expect": { "ready_to_quote.ready": true, "job.selections.brake_pads.partId": "AI-KS-DR2B" } },
+    { "tool": "savePartSelection", "args": ["$job", { "requirementId": "brake_pads", "partId": "AI-NOT-OFFERED" }, "$config_version"],
+      "expect": { "error": "incompatible" } },
+    { "tool": "sendQuote", "args": ["$job", {}], "expect": { "job.status": "quote_sent" } },
+    { "tool": "recordCustomerResponse", "args": ["$estimate", "$version", "approve"], "expect": { "job_status": "approved" } }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "gearing-sora-r3000-ss",
+  "provenance": "Hand-authored replay fixture (not recorded model output). Facts checked on 2026-10-19 against Shimano Specifications handbook Ver. 2.8 (Oct. 7, 2026), Shimano compatibility charts C-254/C-257, C-454, C-731 (Ver 2.7, Oct. 7, 2026) and kmcchain.com. bike.shimano.com product pages were down for maintenance and were not used. Full DM-GN0001 chain-length text not read (search snippet only).",
+  "description": "SORA R3000 2x9 with RD-R3000-SS, 50-34 and an 11-28 (or smaller) cassette: easiest gear that keeps the SS derailleur is CS-HG400-9 11-32T.",
+  "match": { "goal_type": "easier_gearing", "components": { "rear_derailleur": "R3000.*SS", "cassette": "11.?(25|28)", "crankset": "50.?34", "shifters": "(R3000|9)" } },
+  "output": {
+    "status": "ready",
+    "summary": "RD-R3000-SS can take up to a 32T cog. 11-32 is the easiest gear without changing the derailleur.",
+    "questions": [],
+    "requirements": [
+      {
+        "id": "cassette",
+        "slot": "cassette",
+        "title": "Cassette",
+        "kind": "required",
+        "qty": 1,
+        "part": { "brand": "Shimano", "name": "9-speed cassette", "variant": "CS-HG400-9 11-32T", "mpn": "CS-HG400-9-11-32", "customer_label": "11-32 cassette" },
+        "reason": "Biggest cog the current derailleur allows. Low gear 34x32.",
+        "fit_checks": [
+          { "detail": "RD-R3000-SS: largest cog 25-32T, total capacity 37T", "source_ids": ["s3", "s1"] },
+          { "detail": "Chart C-257 ticks 11-32T for RD-R3000 SS", "source_ids": ["s2"] },
+          { "detail": "Needs 37T capacity (16T front + 21T rear): exactly at the SS limit", "source_ids": ["s3"] },
+          { "detail": "HG spline M freehub (8/9/10-speed)", "source_ids": ["s3", "s4"] }
+        ],
+        "alternatives": [
+          {
+            "part": { "brand": "Shimano", "name": "9-speed cassette", "variant": "CS-HG50-9 11-30T", "mpn": "CS-HG50-9-11-30", "customer_label": "11-30 cassette" },
+            "reason": "A step less easy (34x30), with spare derailleur capacity.",
+            "tags": ["lower_cost"],
+            "dependency": null,
+            "source_ids": ["s2", "s3"]
+          }
+        ],
+        "source_ids": ["s1", "s2", "s3"]
+      },
+      {
+        "id": "chain",
+        "slot": "chain",
+        "title": "Chain",
+        "kind": "recommended",
+        "qty": 1,
+        "part": { "brand": "Shimano", "name": "9-speed chain", "variant": "CN-HG53", "mpn": "CN-HG53", "customer_label": "new 9-speed chain" },
+        "reason": "Bigger cog needs a longer chain. Skip to re-use and re-size.",
+        "fit_checks": [
+          { "detail": "C-454 lists CN-HG53 for SORA R3000 2x9", "source_ids": ["s1"] },
+          { "detail": "Size on largest cog + largest chainring, add 2 links (28T or larger)", "source_ids": ["s6"] }
+        ],
+        "alternatives": [
+          {
+            "part": { "brand": "Shimano", "name": "9-speed chain", "variant": "CN-HG93", "mpn": "CN-HG93", "customer_label": "new 9-speed chain" },
+            "reason": "Higher-grade Shimano 9-speed chain listed for R3000.",
+            "tags": [],
+            "dependency": null,
+            "source_ids": ["s1"]
+          },
+          {
+            "part": { "brand": "KMC", "name": "9-speed chain", "variant": "X9", "mpn": "KMC-X9", "customer_label": "new 9-speed chain" },
+            "reason": "KMC states fit for Shimano 9-speed drivetrains.",
+            "tags": ["other_brand"],
+            "dependency": null,
+            "source_ids": ["s5"]
+          }
+        ],
+        "source_ids": ["s1", "s6"]
+      }
+    ],
+    "inferred": [
+      "Easiest overall would be CS-HG400-9 11-34T, but that needs RD-R3000-GS (C-257). Not included; add it if the customer wants more range.",
+      "If the wheel has an 11-speed road freehub body, a 9-speed cassette needs a 1.85 mm spacer (reading of chart C-731).",
+      "Chain re-sizing comes from the bigger cog, not from wear."
+    ],
+    "sources": [
+      { "id": "s1", "title": "Shimano chart C-454 Road rear drivetrain (2x9 SORA R3000)", "url": "https://productinfo.shimano.com/en/compatibility/C-454", "claim": "RD-R3000-SS (25T<=Largest sprocket<=32T), RD-R3000-GS (28T<=Largest sprocket<=34T); cassettes CS-HG400-9, CS-HG50-9; chains CN-HG93, CN-HG53 among others.", "retrieved": "2026-10-19" },
+      { "id": "s2", "title": "Shimano chart C-254 / C-257 Rear derailleur vs cassette (9-speed)", "url": "https://productinfo.shimano.com/en/compatibility/C-254", "claim": "RD-R3000 SS: 11-25, 11-28, 11-30, 11-32 ticked; 11-34 not. GS front double: 11-28 to 11-34 ticked.", "retrieved": "2026-10-19" },
+      { "id": "s3", "title": "Shimano Specifications handbook 2026-2027", "url": "https://productinfo.shimano.com/pdfs/product/latest/Specifications_en.pdf", "claim": "Ver. 2.8: RD-R3000-SS 37T capacity, 16T max front difference, low sprocket 25-32T; CS-HG400-9 in 11-25/28/32/34/36 and 12-36; CS-HG50-9 11-30T; FC-R3000 50-34T; HG spline M.", "retrieved": "2026-10-19" },
+      { "id": "s4", "title": "Shimano chart C-731 Freehub splines", "url": "https://productinfo.shimano.com/en/compatibility/C-731", "claim": "HG spline M (10/9/8/7-speed, MTB 11-speed).", "retrieved": "2026-10-19" },
+      { "id": "s5", "title": "KMC X9 chain", "url": "https://www.kmcchain.com/en/product/bicycle-chain-x9-9-speed", "claim": "Compatibility: SHIMANO, SRAM and all other 9 speed drivetrains; 1x9, 2x9, 3x9.", "retrieved": "2026-10-19" },
+      { "id": "s6", "title": "Shimano dealer manual DM-GN0001 General Operations", "url": "https://si.shimano.com/en/dm/GN0001", "claim": "Search excerpt: when largest sprocket is 28T or larger, put the chain on the largest sprocket and largest chainring and add 2 links. Full text not read.", "retrieved": "2026-10-19" }
+    ]
+  }
+}
