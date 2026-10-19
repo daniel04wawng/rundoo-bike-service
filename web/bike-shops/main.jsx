@@ -86,7 +86,7 @@ function Hero() {
         <p className="eyebrow">Rundoo for Bike Shops</p>
         <h1>Less time at the screen. More time on the bike.</h1>
         <p className="lede">
-          Describe the job. Rundoo’s AI finds parts that fit, checks your stock and suppliers, and builds the work order.
+          Describe the job. Rundoo’s AI finds parts that fit, checks your stock and your supplier catalogs, and builds the work order.
           You make the calls, then get back to building.
         </p>
         <div className="cta-row">
@@ -162,7 +162,7 @@ function HeroStill() {
 
 // ---------- Why shops choose it ----------
 const WHY = [
-  ['No more online research', 'Rundoo goes through manufacturer specs, your inventory and your suppliers for you. Parts that fit arrive with a one-line reason and the source behind it.'],
+  ['No more online research', 'Rundoo goes through manufacturer specs, your inventory and your supplier catalogs for you. Parts that fit arrive with a one-line reason and the source behind it.'],
   ['The right part, before you pay for it', 'Every part is checked against what is actually on the bike before your shop orders it. Fewer surprises at the bench.'],
   ['Approvals without the phone tag', 'Customers get an itemized quote by text and approve with one tap. It lands on the work order, so you never chase it.'],
   ['You stay in control', 'Rundoo does the prep work. You approve every part and every price before anything reaches a customer, at your labor rates.'],
@@ -175,7 +175,7 @@ function Why() {
         <div className="section-head">
           <p className="eyebrow">Why bike shops choose Rundoo</p>
           <h2 id="why-h">You got into this to build bikes.</h2>
-          <p className="sub">Not to dig through spec sheets, stock counts and supplier sites. Rundoo’s AI does that part, so the hours go back to the stand.</p>
+          <p className="sub">Not to dig through spec sheets, stock counts and supplier price lists. Rundoo’s AI does that part, so the hours go back to the stand.</p>
         </div>
         <dl className="why-list">
           {WHY.map(([k, v], i) => (
@@ -211,7 +211,7 @@ const STEPS = [
   {
     n: '03',
     title: 'Source the parts',
-    body: 'Rundoo checks your shelf and your suppliers for the exact size and variant, with price and arrival. No catalog hunting.',
+    body: 'Rundoo checks your shelf and your supplier catalogs for the exact size and variant, with price and expected arrival. No catalog hunting.',
     note: 'Filter by lower cost, sooner, shop stock or other brand.',
     img: 'step-source.png', w: 1660, h: 868, shape: 'wide',
     alt: 'Other options for the cassette: Shimano CS-R7000 11-30T in stock with 2 available, which works with the current derailleur; and CS-R7000 11-32T, order from Coastal Bike Supply in 3 business days.',
@@ -325,7 +325,7 @@ function Sourcing() {
         <div className="section-head">
           <p className="eyebrow">Inventory and suppliers</p>
           <h2 id="src-h">What fits. What you have. What you can order.</h2>
-          <p className="sub">No browser tabs, supplier sites or trips to the back room. Rundoo goes through each source for you and lines up the answers for the exact variant.</p>
+          <p className="sub">No browser tabs, price lists or trips to the back room. Rundoo goes through your shelf and your supplier catalogs for you and lines up the answers for the exact variant.</p>
         </div>
 
         <div className="sources" role="list">
@@ -342,7 +342,7 @@ function Sourcing() {
           <div className="source" role="listitem">
             <span className="source-k">You can order</span>
             <b>Supplier offers</b>
-            <p>Price and expected arrival from the distributors you buy from.</p>
+            <p>Price and expected arrival from the supplier catalogs you keep in Rundoo.</p>
           </div>
         </div>
 
@@ -374,12 +374,13 @@ function Sourcing() {
 
         <div className="partners">
           <div>
-            <h3>Your distributors, connected.</h3>
-            <p>Rundoo purchasing already works with vendor catalogs and purchase orders. Bike distributor connections are on the roadmap. Tell us who you buy from and we’ll start there.</p>
+            <h3>Supplier catalogs today. Live distributor stock next.</h3>
+            <p>Supplier checks use the vendor catalogs you keep in Rundoo purchasing, with the price and lead time on file for each vendor. Direct bike-distributor connections with live stock are on the roadmap. Tell us who you buy from and we’ll start there.</p>
           </div>
           <ul className="partner-tags" aria-label="Connection status">
             <li><span className="dot live" aria-hidden="true" />Vendor catalogs and purchase orders <em>Available in Rundoo</em></li>
-            <li><span className="dot road" aria-hidden="true" />Bike distributor catalogs and live stock <em>Roadmap</em></li>
+            <li><span className="dot live" aria-hidden="true" />Supplier checks against those catalogs <em>Included</em></li>
+            <li><span className="dot road" aria-hidden="true" />Direct bike-distributor feeds with live stock <em>Roadmap</em></li>
             <li><span className="dot road" aria-hidden="true" />Your distributor list <em>Reviewed in your demo</em></li>
           </ul>
         </div>
@@ -438,7 +439,7 @@ function Compare() {
             <ol className="cmp-steps">
               <li><b>Researches parts that fit this bike,</b> with a reason and the manufacturer source.</li>
               <li><b>Checks your inventory first,</b> minus parts held for other jobs.</li>
-              <li><b>Searches your suppliers</b> for the exact variant, price and arrival.</li>
+              <li><b>Searches your supplier catalogs</b> for the exact variant, price and expected arrival.</li>
               <li><b>Builds the work order</b> with parts and your labor rates.</li>
               <li><b>Texts the customer</b> and records their answer on the job.</li>
             </ol>
@@ -506,7 +507,7 @@ const FAQ = [
   ['Can I use parts already in my shop?',
     'Yes. Your inventory is checked first and in-stock options are labeled, so you use what is on the shelf before ordering more. Parts held for other jobs are not counted.'],
   ['What happens when a recommended part is unavailable?',
-    'You see supplier options with price and arrival, plus compatible alternatives by lower cost, sooner, shop stock or other brand. Related parts update automatically.'],
+    'You see options from your supplier catalogs with price and expected arrival, plus compatible alternatives by lower cost, sooner, shop stock or other brand. Related parts update automatically.'],
   ['How does the customer approve the estimate?',
     'Your customer gets a text with the itemized estimate and taps Approve or Decline. The answer lands on the work order, so you never have to chase it. A declined estimate can be revised and resent.'],
   ['What would switching from another POS involve?',
@@ -606,7 +607,7 @@ function FinalCta() {
           <p>We’ll run it through Rundoo with you and show where your time goes back to the bench.</p>
           <ul className="expect">
             <li>A real repair or build from your shop</li>
-            <li>Your suppliers and how they’d connect</li>
+            <li>Your supplier catalogs, and which distributors you’d want connected live</li>
             <li>What moving from your current POS involves</li>
           </ul>
           {config.bookingUrl && <BookLink className="btn light lg" />}

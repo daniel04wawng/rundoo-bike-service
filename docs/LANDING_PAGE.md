@@ -88,7 +88,7 @@ The comparison frames the difference as who does the legwork on a custom job: on
 
 ## Partners to pursue (internal, not on the page as partners)
 
-None of these have been contacted. The page says only that bike distributor connections are on the roadmap.
+None of these have been contacted. The page describes one supplier state throughout: supplier checks run against the vendor catalogs a shop keeps in Rundoo purchasing (price and lead time per vendor); direct bike-distributor connections with live stock are roadmap. The hero, step 3, the Inventory and suppliers section, the comparison and the FAQ all use "supplier catalogs" wording to match.
 
 - **Bike distributors (sourcing):** QBP, J&B Importers, Hawley, BTI. Lightspeed's help center shows these already offer POS catalog and PO integrations, so shops will expect them. For Canadian shops (the demo's CAD/Vancouver setting), check Canadian distributors' B2B portals too.
 - **Brand B2B (sourcing):** Specialized, Trek, Giant dealer portals, for brand-locked parts.
