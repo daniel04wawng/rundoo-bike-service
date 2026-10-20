@@ -44,12 +44,22 @@ Until a URL is set, the hero shows the app screenshot with the approved-quote ph
 
 Tested with a throwaway clip: player renders in the hero with controls and captions, no autoplay, "Watch the workflow" starts it, phone overlay hidden.
 
+## Usage tracking
+
+First-party, no third-party scripts, no cookies, no IP addresses (`server/analytics.js`).
+
+- **Landing page** (`web/bike-shops/track.js`): visits (with referrer or `utm_source`), unique visitors per tab session, button clicks and where on the page, sections scrolled into view, video plays and how far people watch (25/50/75/100%), workflow step tabs, FAQ questions opened, Lightspeed source links, and demo requests. Demo requests keep the form fields (name, shop, email, size, POS) because they are leads.
+- **Demo app**: recorded server-side from the API calls it already makes: app opens, jobs created and described (with the request text), research runs, parts chosen, quotes sent, customer approve/decline, demo resets. No app UI code changed.
+- **Storage**: `<DATA_DIR>/analytics/events.jsonl` (override with `ANALYTICS_DIR`), and each event is also printed as a `[track]` line in the server log. `ANALYTICS=off` disables it.
+- **Viewing**: set `ANALYTICS_KEY`, then open `/analytics?key=<key>` (HTML) or `/api/analytics?key=<key>` (JSON). Without the key both return 404.
+- **Railway**: without a volume the events file is wiped on each deploy (the log lines stay in that deployment's logs). Attach a volume and point `ANALYTICS_DIR` (or `DATA_DIR`) at it to keep history.
+
 ## Fictional and example content (replace before a real launch)
 
 - **Testimonials are fictional**, written as sample content: Renata Ilić (Spoke & Spindle), Marcus Bell (Eastside Wheelhouse), Dana Okafor (Northline Cycle Co.). Names, shops and text wordmarks are invented. They are not real people or shops. Replace with real, approved quotes.
 - **Suppliers are fictional**: Coastal Bike Supply and Northern Parts Co. come from the app's synthetic data (`data/fixtures/commercial.json`), as do all stock counts, prices and arrival times on the page. No real distributor is named as a partner.
 - **The shop, customer and quote** (Demo Cycle Works, Maya Chen, $212.78) are the app's seed data.
-- **Demo request form** (when no booking URL is set): validates and shows a confirmation, but nothing is sent or stored. The confirmation says nothing is scheduled. Connect a booking URL or form backend before real use.
+- **Demo request form** (when no booking URL is set): validates, shows a confirmation, and saves the request as a `demo_request` event (see Usage tracking). Nothing is emailed. The confirmation says nothing is scheduled.
 - **Bike-shop capabilities are a proposed extension of Rundoo**, presented as a launch concept. The footer says so in one line.
 
 ## Product visuals

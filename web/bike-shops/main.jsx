@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { config } from './config.js';
 import './landing.css';
+import { track, startTracking } from './track.js';
 
 const IMG = '/bike-shops';
 
@@ -554,7 +555,7 @@ function DemoRequest() {
       document.getElementById(`f-${Object.keys(errs)[0]}`)?.focus();
       return;
     }
-    // Local only: nothing is sent or stored.
+    track('demo_request', { name: f.name.trim(), shop: f.shop.trim(), email: f.email.trim(), size: f.size || '', pos: (f.pos || '').trim() });
     setSent({ first: f.name.trim().split(/\s+/)[0], shop: f.shop.trim(), email: f.email.trim() });
   };
 
@@ -637,6 +638,7 @@ function Footer() {
 }
 
 function Landing() {
+  useEffect(() => { startTracking(); }, []);
   return (
     <>
       <a className="skip" href="#how">Skip to how it works</a>

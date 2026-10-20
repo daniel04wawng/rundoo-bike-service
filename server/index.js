@@ -8,9 +8,12 @@ import * as tools from './orchestrator.js';
 import { load, reset, runId } from './store.js';
 import { liveAvailable } from './adapters/llm.js';
 import { researchMode } from './adapters/research_llm.js';
+import { appUsageMiddleware, trackFromClient, summary } from './analytics.js';
+import { renderStats } from './stats_page.js';
 
 const app = express();
 app.use(express.json({ limit: '200kb' }));
+app.use(appUsageMiddleware);
 
 const wrap = (fn) => async (req, res) => {
   try {
@@ -56,6 +59,18 @@ app.post('/api/dev/reset', wrap(() => {
   reset();
   return { ok: true, run_id: runId() };
 }));
+
+// Usage tracking. /api/track takes landing-page events (also as a text/plain
+// sendBeacon body). Stats need ANALYTICS_KEY; without it they 404.
+app.post('/api/track', express.text({ type: 'text/plain', limit: '8kb' }), (req, res) => {
+  if (typeof req.body === 'string') {
+    try { req.body = JSON.parse(req.body); } catch { return res.status(400).end(); }
+  }
+  res.json(trackFromClient(req));
+});
+const statsAllowed = (req) => process.env.ANALYTICS_KEY && req.query.key === process.env.ANALYTICS_KEY;
+app.get('/api/analytics', (req, res) => (statsAllowed(req) ? res.json(summary()) : res.status(404).json({ error: 'not_found' })));
+app.get('/analytics', (req, res) => (statsAllowed(req) ? res.type('html').send(renderStats(summary())) : res.status(404).send('Not found')));
 
 const dist = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../dist');
 if (fs.existsSync(dist)) {
